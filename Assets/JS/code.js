@@ -51,6 +51,13 @@ pizzaform.addEventListener("submit", function (botonpz) {
     if (campopizza == "op1") {
         respuesta += "Reclamar jugo"
         document.querySelector("#respizza").innerHTML = respuesta
+        if (generopt == "hombre") {
+            respuesta += " Mas pizza de 3 carnes"
+            document.querySelector("#respizza").innerHTML = respuesta
+        } else if (generopt == "mujer") {
+            respuesta += " Mas pizza hawaiana"
+            document.querySelector("#respizza").innerHTML = respuesta
+        }
     } else if (campopizza == "op3") {
         respuesta += "Reclamar cerveza"
         if (generopt == "hombre") {
