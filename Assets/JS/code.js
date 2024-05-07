@@ -83,8 +83,8 @@ campomult.addEventListener("submit", function (botonmu) {
     document.querySelector("#resulmult").innerHTML = ""
     let numusu = botonmu.target.usuario.value
     let multip = botonmu.target.multiplicacion.value
-    for ( i = 1; i <= multip; i ++) {
-        document.querySelector("#resulmult").innerHTML += `${numusu} X ${i} = ${ i * numusu } <br>`
+    for (i = 1; i <= multip; i++) {
+        document.querySelector("#resulmult").innerHTML += `${numusu} X ${i} = ${i * numusu} <br>`
     }
 
 })
@@ -99,17 +99,71 @@ Cuando el promedio sea mayor que 4, se le descuenta 50%
 */
 
 let formpro = document.querySelector("#promedio")
-formpro.addEventListener("submit", function(botonpro){
-botonpro.preventDefault()
-let promedionota = botonpro.target.prompun.value.
-promedionota = parseFloat
+formpro.addEventListener("submit", function (botonpro) {
+    botonpro.preventDefault()
+    let promedionota = parseFloat(botonpro.target.prompun.value)
 
-if (promedionota < 3) {
-    
-}else if(promedionota ){
+    if (promedionota == "") {
+        document.querySelector("#divprom").innerHTML = "Ingrese su nota retardado"
+    }
+    else if (promedionota < 3) {
+        document.querySelector("#divprom").innerHTML = "No tiene descuento"
+    } else if (promedionota >= 3 && promedionota <= 3.9) {
+        document.querySelector("#divprom").innerHTML = "Se le descuenta el 5% = 50.000"
+    } else if (promedionota >= 4 && promedionota <= 5) {
+        document.querySelector("#divprom").innerHTML = "Se le descuenta el 50% = 500.000"
+    }
 
-}
+})
+
+/*
+Se necesita crear un menú de opciones, donde la persona escriba que quiere de comer,
+se le vaya sumando el valor a lo seleccionado hasta que el 
+usuario escriba pagar, Una vez termine de comprar, se le debe mostrar el valor que debe pagar. 
+(El menú y precios lo decide el programado@r.) 
+Con 2 arrays o con 1 array de objeto FIND
+*/
+
+let total = 0
+let formarr = document.querySelector("#formarr")
+formarr.addEventListener("submit", function (botonarr) {
+    botonarr.preventDefault()
+    let arrayusuario = botonarr.target.usuarr.value
+
+    let comidas = [
+        {
+            nombre: "hamburguesa",
+            valor: 5000
+        },
+        {
+            nombre: "perrito",
+            valor: 500
+        },
+        {
+            nombre: "mojon",
+            valor: 100
+        },
+        {
+            nombre: "miguel",
+            valor: 30000
+        }
+    ]
+
+
+
+
+    if (arrayusuario == "pagar") {
+        document.querySelector("#divtotal").innerHTML = `su total es: ${total}`
+    } else {
+
+        let dataPlato = comidas.find(indigente => indigente.nombre == arrayusuario)
+        total += dataPlato.valor
+
+
+        document.querySelector("#divarray").innerHTML = `El valor es: ${dataPlato.valor}`
+    }
 
 
 
 })
+
